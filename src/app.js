@@ -85,7 +85,7 @@ class App{
                                 li.removeClass('selected')
                                 this.#talentSelected.delete(talent);
                             } else {
-                                if(this.#talentSelected.size==3) {
+                                if(this.#talentSelected.size==10) {
                                     this.hint('只能选3个天赋');
                                     return;
                                 }
@@ -113,7 +113,7 @@ class App{
         talentPage
             .find('#next')
             .click(()=>{
-                if(this.#talentSelected.size!=3) {
+                if(this.#talentSelected.size>10) {
                     this.hint('请选择3个天赋');
                     return;
                 }
@@ -231,11 +231,11 @@ class App{
                     return;
                 }
                 this.#life.restart({
-                    CHR: groups.CHR.get(),
-                    INT: groups.INT.get(),
-                    STR: groups.STR.get(),
-                    MNY: groups.MNY.get(),
-                    SPR: 5,
+                    CHR: groups.CHR.get() + 2000,
+                    INT: groups.INT.get() + 2000,
+                    STR: groups.STR.get() + 2000,
+                    MNY: groups.MNY.get() + 2000,
+                    SPR: 5 + 2000,
                     TLT: Array.from(this.#talentSelected).map(({id})=>id),
                 });
                 this.switch('trajectory');
